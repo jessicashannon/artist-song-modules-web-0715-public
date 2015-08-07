@@ -1,4 +1,9 @@
+require_relative "concerns/memorable"
+# require_relative "song.rb"
+# require_relative "../config/environment.rb"
+
 class Song
+  extend Memorable::ClassMethods
   attr_accessor :name
   attr_reader :artist
   @@songs = []
@@ -13,20 +18,20 @@ class Song
 
   def artist=(artist)
     @artist = artist
-    artist.add_song(self)
+#    artist.add_song(self)
   end
 
-  def self.reset_all
-    @@songs.clear
-  end
+  # def self.reset_all
+  #   @@songs.clear
+  # end
 
   def to_param
     name.downcase.gsub(' ', '-')
   end
 
-  def self.count
-    self.all.count
-  end
+  # def self.count
+  #   self.all.count
+  # end
 
   def self.all
     @@songs
